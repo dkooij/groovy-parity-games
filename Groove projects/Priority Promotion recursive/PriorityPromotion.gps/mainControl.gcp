@@ -1,0 +1,125 @@
+solveParityGame();
+
+function solveParityGame() {
+    initializeStore;
+    alap {
+        findDominion();
+        removeDominionRegion;
+    }
+    deleteStore;
+}
+
+function findDominion() {
+    setCurrentPriority();
+    until (foundDominion) {
+        attractNew();
+        closednessChecks();
+    }
+}
+
+function closednessChecks() {
+    try findOpenVertices();
+    try findEscapeVertices();
+    if (isGloballyClosed) {
+        resetOtherRegionsColor();
+        attract();
+        alap setStrategy;
+        returnDominionColor();
+    } else if (isLocallyClosed) {
+        mergeWithLowestEscapeRegion();
+        resetLowerRegionsCleanupColor();
+    } else { // if (noRecursiveClosedCheck)
+        recursiveGo();
+        recursiveGoRemoveOpenVertices();
+        if (subgameNotEmpty) {
+            findDominion();
+            recursiveReturn();
+            cleanup;
+            
+            int oldPriority;
+            setDominionRegionPriority(out oldPriority);
+            closednessChecks();
+            if (noDominionFound) {
+                restoreCurrentPriority(oldPriority);
+            }
+        } else {
+            recursiveReturn();
+            recomputeRegion(); // Region is recomputed to get back strategies lost by going recursive.
+            setCurrentPriority();
+        }
+    }
+    cleanup;
+}
+
+recipe setCurrentPriority() {
+    setHighestRemainingPriority;
+    try updateParity;
+    cleanup; // Necessary at the end of findDominion function (in else statement), otherwise has no effect.
+}
+
+function attractNew() {
+    try setCurrentPriorityRegionColor();
+    attract();
+}
+
+function attract() {
+    alap {
+        choice {
+    	    attractCurrentParityColor();
+    	} or {
+    	    attractOtherParityColor();
+    	}
+    }
+}
+
+recipe findOpenVertices() {
+    findOpenSources;
+    alap findOpenSources;
+}
+
+recipe findEscapeVertices() {
+    findEscapeDestinations;
+    findEscapeSources;
+}
+
+recipe mergeWithLowestEscapeRegion() {
+    int attractedRegion;
+    setLowestEscapePriority(out attractedRegion);
+    alap setStrategyBeforeMerger(attractedRegion);
+    updateAttractorRegionColor(attractedRegion);
+}
+
+recipe resetLowerRegionsCleanupColor() {
+    resetLowerRegionsColor();
+    cleanup;
+}
+
+recipe recursiveGo() {
+    removeAllCurrents;
+    recursiveGoStore;
+    try updateParity;
+    recursiveGoVertices;
+    try removeStrategyWhenNoRegion;
+    colorRegion;
+}
+
+function recursiveGoRemoveOpenVertices() {
+    // Should be recipe, but then LTS simulation creates multiple trees (bug in Groove?).
+    attract();
+    try recursiveGoRemoveAttracted;
+    colorRegion;
+}
+
+recipe recursiveReturn() {
+    recursiveReturnVertices;
+    try propagateDominionRegion;
+    recursiveReturnStore;
+    setCurrentVertices;
+    colorRegion;
+}
+
+function recomputeRegion() {
+    // Should be recipe, but then LTS simulation creates multiple trees (bug in Groove?).
+    deleteCurrentRegion;
+    attractNew();
+}

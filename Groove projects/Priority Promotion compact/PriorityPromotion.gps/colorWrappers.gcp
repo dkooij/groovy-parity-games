@@ -1,0 +1,34 @@
+recipe setCurrentPriorityRegionColor() {
+    setCurrentPriorityRegion;
+    colorRegion;
+}
+
+recipe attractCurrentParityColor() {
+    attractCurrentParity;
+    colorRegion;
+}
+
+recipe attractOtherParityColor() {
+    attractOtherParity;
+    colorRegion;
+}
+
+recipe returnDominionColor() {
+    returnDominion;
+    colorRegion;
+}
+
+recipe updateAttractorRegionColor(int attractedRegion) {
+    updateAttractorRegion(attractedRegion);
+    colorRegion;
+}
+
+recipe resetLowerRegionsColor() {
+    resetLowerRegions;
+    colorRegion;
+}
+
+recipe resetOtherRegionsColor() {
+    resetOtherRegions;
+    colorRegion;
+}

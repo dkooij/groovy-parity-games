@@ -1,0 +1,61 @@
+solveParityGame();
+
+function solveParityGame() {
+    initializeStore;
+    alap findDominion();
+    deleteStore;
+}
+
+function findDominion() {
+    setCurrentPriority();
+    until (foundDominion) {
+        attract();
+        alap findOpenVertices;
+        try findEscapeVertices;
+
+        choice {
+            if (isGloballyClosed) {
+                resetOtherRegionsColor();
+                attract();
+                alap setStrategy;
+                returnDominionColor();
+            } else if (isLocallyClosed) {
+                mergeWithLowestEscapeRegion();
+                resetLowerRegionsCleanupColor();
+            } else {
+                setCurrentPriority();
+            }
+        } or {
+            setCurrentPriority();
+        }
+    }
+}
+
+recipe setCurrentPriority() {
+    setHighestRemainingPriority;
+    try updateParity;
+    cleanup; // Necessary at the end of findDominion function (in else statement), otherwise has no effect.
+}
+
+function attract() {
+    try setCurrentPriorityRegionColor();
+    alap {
+        choice {
+    	    attractCurrentParityColor();
+    	} or {
+    	    attractOtherParityColor();
+    	}
+    }
+}
+
+recipe mergeWithLowestEscapeRegion() {
+    int attractedRegion;
+    setLowestEscapePriority(out attractedRegion);
+    alap setStrategyBeforeMerger(attractedRegion);
+    updateAttractorRegionColor(attractedRegion);
+}
+
+recipe resetLowerRegionsCleanupColor() {
+    resetLowerRegionsColor();
+    cleanup;
+}
