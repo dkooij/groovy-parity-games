@@ -31,12 +31,12 @@
         </node>
         <node id="n5">
             <attr name="layout">
-                <string>468 198 66 54</string>
+                <string>475 200 66 54</string>
             </attr>
         </node>
         <node id="n6">
             <attr name="layout">
-                <string>642 199 66 54</string>
+                <string>650 199 66 54</string>
             </attr>
         </node>
         <edge from="n0" to="n0">
@@ -79,12 +79,12 @@
                 <string>let:priority = 2</string>
             </attr>
         </edge>
-        <edge from="n1" to="n4">
+        <edge from="n1" to="n3">
             <attr name="label">
                 <string>edge</string>
             </attr>
         </edge>
-        <edge from="n1" to="n3">
+        <edge from="n1" to="n4">
             <attr name="label">
                 <string>edge</string>
             </attr>
@@ -109,7 +109,7 @@
                 <string>edge</string>
             </attr>
             <attr name="layout">
-                <string>500 0 197 240 330 282 463 237 11</string>
+                <string>500 0 159 228 330 282 501 225 11</string>
             </attr>
         </edge>
         <edge from="n2" to="n0">
@@ -152,12 +152,12 @@
                 <string>let:priority = 6</string>
             </attr>
         </edge>
-        <edge from="n4" to="n3">
+        <edge from="n4" to="n2">
             <attr name="label">
                 <string>edge</string>
             </attr>
         </edge>
-        <edge from="n4" to="n2">
+        <edge from="n4" to="n3">
             <attr name="label">
                 <string>edge</string>
             </attr>
