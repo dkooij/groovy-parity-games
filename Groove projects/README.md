@@ -17,8 +17,9 @@ Note that at the time of writing, Groove does not function properly when using n
 For more detailed usage instructions on how to use Groove, we refer to `usermanual.pdf` in the Groove directory.
 
 ## Priority Promotion Variants
-This repository contains the following four Groove projects:
+This repository contains the following five Groove projects:
 1. **Priority Promotion:** the default version of the Priority Promotion algorithm modelled using graph transformations in Groove. Contains non-deterministic attractor computation, which can be disabled by setting the exploration strategy to _Linear Exploration_.
 2. **Priority Promotion compact:** same as (1), but formatted in a more compact form in order to save space in the research paper.
 3. **Priority Promotion recursive:** recursive variant of the Priority Promotion algorithm, that recursively searches non-closed regions for dominions. Contains the same non-deterministic attractor computation as in (1).
 4. **Priority Promotion non-deterministic closed region handling:** variant of the Priority Promotion algorithm that non-deterministically chooses between handling and ignoring closed regions. Contains the same non-deterministic attractor computation as in (1).
+5. **Priority Promotion non-deterministic recursion:** variant of the Priority Promotion algorithm that non-deterministically chooses between searching a non-closed region for a dominion and the normal (non-recursive) behaviour.
