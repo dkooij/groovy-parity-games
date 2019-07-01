@@ -1,7 +1,7 @@
 # Groove Projects
 Groove projects modelling (extensions of) the _priority promotion_ algorithm to solve parity games.
 
-**Last updated:** _June 29th, 2019_.
+**Last updated:** _July 1st, 2019_.
 
 ## Prerequisites
 - Java 8 ([java.com](https://java.com)).
